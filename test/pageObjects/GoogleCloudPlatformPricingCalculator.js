@@ -5,32 +5,45 @@ class GoogleCloudPlatformPricingCalculator extends BaseInteraction {
     super();
     this.searchEngine = '//*[@class="mb2a7b"]';
     this.searchedItem =
-      '(//*[contains(text(), "Google Cloud Pricing Calculator")])[1]';
-    this.addToEstimateBtn = '(//button[@jscontroller="O626Fe"])[1]';
-    this.computeEngineMode = '(//*[@class="VobRQb"])[1]';
+      '(//b[contains(text(), "Google Cloud Pricing Calculator")])[3]';
+    this.computeEngineMode = '//div[@title="Compute Engine"]';
+    this.instances = '#input_100';
+    this.intancesForField = '#input_101';
+    this.softwareDropDown = '#select_value_label_92';
+    this.requiredSoftware = '#select_option_102';
+    this.provisionongModelDropDown = '#select_value_label_93';
+    this.provisionongModelRegular = '#select_option_115';
+    this.seriesDropDown = '#select_value_label_95';
+    this.n1Serie = '#select_option_224';
+    this.machineTypeDropDown = '#select_value_label_96';
+    this.requiredMachineType = '#select_option_539';
+    this.checkBoxAddGPUs = '(//*[@aria-label="Add GPUs"])[1]';
+    this.GPUTypeDropDown = '#select_575';
+    this.requiredGPUtype = '#select_option_582';
+    this.numberOfGPUsDropDown = '#select_value_label_574';
+    this.requiredNumberOfGPUs = '#select_option_585';
+    this.localSSDDropDown = '#select_value_label_533';
+    this.requiredLocalSSD = '#select_option_560';
+    this.datacenterLocationDropDown = '#select_value_label_98';
+    this.requiredDatacenterLocation = '#select_option_268';
+    this.committedUsageDropDown = '#select_value_label_99';
+    this.requiredCommittedUsage = '#select_option_138';
+    this.addToEstimateBtn =
+      '(//button[contains(text(), "Add to Estimate")])[1]';
+    this.cookiesOkBtn = '//button[@class="devsite-snackbar-action"]';
 
-    this.switcherAdvancedSettings = '//*[starts-with(@jslog, "198391")]';
-    this.numOfInstancesField = '(//input[@type="number"])[1]';
-    this.dropDownOperatinsSyst =
-      '//*[@aria-labelledby="c19 c21" and @role="combobox"]';
-    this.requiredOperSyst =
-      '//*[starts-with(@data-708c49e2-dcf0-4d62-b457-88577bfe3081, "Free: Debian")]';
-    this.provisioningModel = '//label[contains(text(), "Regular")]';
-    this.dropDownMachineType = '//*[@aria-labelledby="c31 c33"]';
-    this.requiredMachineType = '//*[@data-value="n1-standard-8"]';
-    this.switcherAddGPUs = '//*[@aria-label="Add GPUs"]';
-    this.dropDownGPU = '//*[@aria-labelledby="c577 c579"]'; //
-    this.requiredGPU = '//*[@data-value="nvidia-tesla-v100"]'; //
-    this.dropDownNumberGPUs = '//*[@aria-labelledby="c1350 c1352"]'; //
-    this.requiredNumberGPUs = '(//*[@data-value="1"])[1]'; //
-    this.dropDownLocalSSD = '//*[@aria-labelledby="c39 c41"]';
-    this.requiredLocalSSD = '(//*[@data-value="2"])[2]';
-    this.dropDownRegion = '//*[@aria-labelledby="c43 c45"]';
-    this.requiredRegion = '//*[@data-value="europe-west1"]';
-    this.oneYearCommitedUse = '//*[contains(text(),"1 year")]';
-    this.monthCost = '//label[@class="gt0C8e MyvX5d"]';
+    this.provisioningModel = '(//*[@class="md-list-item-text ng-binding"])[4]';
+    this.instanceType =
+      '(//*[@class="md-list-item-text ng-binding cpc-cart-multiline flex"])[1]';
+    this.region = '(//*[@class="md-list-item-text ng-binding"])[1]';
+    this.localSSD =
+      '(//*[@class="md-list-item-text ng-binding cpc-cart-multiline flex"])[2]';
+    this.commitmentTerm = '(//*[@class="md-list-item-text ng-binding"])[3]';
+    this.totalEstimatedCost = '(//b[@class="ng-binding"])[2]';
 
-    this.cookiesOkBtn = '//button[@class="pvUife"]';
+    // this.emailEstimateBtn = '//*[@id="Email Estimate"]';
+    // this.emailField = '#input_577';
+    // this.sendEmailBtn = '//*[contains(text(), "Send Email")]';
   }
 
   async openBrowserWithURL(url) {
@@ -47,6 +60,10 @@ class GoogleCloudPlatformPricingCalculator extends BaseInteraction {
 
   async pressKey(key) {
     await super.pressKey(key);
+  }
+
+  async switchFrame(howManyFrames) {
+    await super.switchFrame(howManyFrames);
   }
 
   async acceptCookies() {
@@ -66,6 +83,15 @@ class GoogleCloudPlatformPricingCalculator extends BaseInteraction {
     const element = await super.getElemet(selector);
     return element;
   }
+
+  // async switchWindow(handle) {
+  //   await super.switchWindow(handle);
+  // }
+
+  // async getWindowHandle() {
+  //   const handle = await super.getWindowHandle();
+  //   return handle;
+  // }
 }
 
 module.exports = new GoogleCloudPlatformPricingCalculator();
