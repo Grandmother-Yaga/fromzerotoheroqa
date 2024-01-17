@@ -16,14 +16,14 @@ class GoogleCloudPlatformPricingCalculator extends BaseInteraction {
     this.seriesDropDown = '#select_value_label_95';
     this.n1Serie = '#select_option_224';
     this.machineTypeDropDown = '#select_value_label_96';
-    this.requiredMachineType = '#select_option_539';
+    this.requiredMachineType = '#select_option_474';
     this.checkBoxAddGPUs = '(//*[@aria-label="Add GPUs"])[1]';
-    this.GPUTypeDropDown = '#select_575';
-    this.requiredGPUtype = '#select_option_582';
-    this.numberOfGPUsDropDown = '#select_value_label_574';
-    this.requiredNumberOfGPUs = '#select_option_585';
-    this.localSSDDropDown = '#select_value_label_533';
-    this.requiredLocalSSD = '#select_option_560';
+    this.GPUTypeDropDown = '#select_510';
+    this.requiredGPUtype = '#select_option_517';
+    this.numberOfGPUsDropDown = '#select_value_label_509';
+    this.requiredNumberOfGPUs = '#select_option_520';
+    this.localSSDDropDown = '#select_value_label_468';
+    this.requiredLocalSSD = '#select_option_495';
     this.datacenterLocationDropDown = '#select_value_label_98';
     this.requiredDatacenterLocation = '#select_option_268';
     this.committedUsageDropDown = '#select_value_label_99';
@@ -41,9 +41,9 @@ class GoogleCloudPlatformPricingCalculator extends BaseInteraction {
     this.commitmentTerm = '(//*[@class="md-list-item-text ng-binding"])[3]';
     this.totalEstimatedCost = '(//b[@class="ng-binding"])[2]';
 
-    // this.emailEstimateBtn = '//*[@id="Email Estimate"]';
-    // this.emailField = '#input_577';
-    // this.sendEmailBtn = '//*[contains(text(), "Send Email")]';
+    this.emailEstimateBtn = '//*[@id="Email Estimate"]';
+    this.emailField = '//input[@type="email"]';
+    this.sendEmailBtn = '//*[contains(text(), "Send Email")]';
   }
 
   async openBrowserWithURL(url) {
@@ -84,14 +84,14 @@ class GoogleCloudPlatformPricingCalculator extends BaseInteraction {
     return element;
   }
 
-  // async switchWindow(handle) {
-  //   await super.switchWindow(handle);
-  // }
+  async switchToWindow(handle) {
+    await super.switchToWindow(handle);
+  }
 
-  // async getWindowHandle() {
-  //   const handle = await super.getWindowHandle();
-  //   return handle;
-  // }
+  async getWindowHandle() {
+    const handle = await super.getWindowHandle();
+    return handle;
+  }
 }
 
 module.exports = new GoogleCloudPlatformPricingCalculator();

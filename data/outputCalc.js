@@ -6,6 +6,7 @@ const outputCalc = {
   localSSD: 'Local SSD: 2x375 GiB',
   commitmentTerm: 'Commitment term: 1 Year',
   totalEstimatedCost: 'Estimated Component Cost: USD 1,081.20 per 1 month',
+  totalEstimatedCostTask04: 'USD 1,081.20',
 };
 
 module.exports = outputCalc; //{outputCalc}

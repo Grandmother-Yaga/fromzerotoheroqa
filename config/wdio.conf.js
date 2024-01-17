@@ -27,6 +27,7 @@ exports.config = {
     task_01: ['../test/specs/**/task_01.js'],
     task_02: ['../test/specs/**/task_02.js'],
     task_03: ['../test/specs/**/task_03.js'],
+    task_04: ['../test/specs/**/task_04.js'],
   },
 
   // Patterns to exclude.

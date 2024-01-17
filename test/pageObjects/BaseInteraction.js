@@ -72,8 +72,8 @@ class BaseInteraction {
     return text;
   }
 
-  async switchWindow(handle) {
-    await browser.switchWindow(handle);
+  async switchToWindow(handle) {
+    await browser.switchToWindow(handle);
   }
 
   async getWindowHandle() {
