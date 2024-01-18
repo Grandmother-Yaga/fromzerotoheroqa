@@ -1,3 +1,5 @@
+const { browser } = require('./yargs.conf.js');
+
 exports.config = {
   //
   // ====================
@@ -56,27 +58,7 @@ exports.config = {
   // Sauce Labs platform configurator - a great tool to configure your capabilities:
   // https://saucelabs.com/platform/platform-configurator
   //
-  capabilities: [
-    {
-      browserName: 'chrome',
-      // browserVersion: '120.0.6099.109',
-      'goog:chromeOptions': {
-        args: [
-          'start-maximized',
-          'disable-infobars',
-          'disable-popup-blocking',
-          'disable-notifications',
-          'no-sandbox',
-          'disable-gpu',
-        ],
-        prefs: {
-          'profile.managed_default_content_settings.popups': 2,
-          'profile.managed_default_content_settings.notifications': 2,
-          'profile.default_content_settings.cookies': 2,
-        },
-      },
-    },
-  ],
+  capabilities: [browser],
 
   //
   // ===================

@@ -19,7 +19,10 @@
     "@wdio/local-runner": "^8.27.2",
     "@wdio/mocha-framework": "^8.27.2",
     "@wdio/spec-reporter": "^8.27.2",
-    "chromedriver": "^120.0.6099.109",
-    "wdio-chromedriver-service": "^8.1.1"
+    "chromedriver": "^120.0.1",
+    "edgedriver": "^5.3.9",
+    "wdio-chromedriver-service": "^8.1.1",
+    "wdio-edgedriver-service": "^3.0.3",
+    "yargs": "^17.7.2"
   }
 }
