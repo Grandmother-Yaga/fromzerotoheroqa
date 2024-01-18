@@ -30,6 +30,12 @@ exports.config = {
     task_02: ['../test/specs/**/task_02.js'],
     task_03: ['../test/specs/**/task_03.js'],
     task_04: ['../test/specs/**/task_04.js'],
+    smokeTest: ['../test/specs/**/task_04.js'],
+    otherTests: [
+      '../test/specs/**/task_01.js',
+      '../test/specs/**/task_02.js',
+      '../test/specs/**/task_03.js',
+    ],
   },
 
   // Patterns to exclude.

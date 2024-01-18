@@ -9,7 +9,11 @@
     "task_01": "npx wdio run ./config/wdio.conf.js --suite task_01",
     "task_02": "npx wdio run ./config/wdio.conf.js --suite task_02",
     "task_03": "npx wdio run ./config/wdio.conf.js --suite task_03",
-    "task_04": "npx wdio run ./config/wdio.conf.js --suite task_04"
+    "task_04": "npx wdio run ./config/wdio.conf.js --suite task_04",
+    "smokeTest": "npx wdio run ./config/wdio.conf.js --suite smokeTest",
+    "smokeTest_chrome": "npx wdio run ./config/wdio.conf.js --suite smokeTest .config/yargs.conf.js --browser chrome",
+    "smokeTest_edge": "npx wdio run ./config/wdio.conf.js --suite smokeTest .config/yargs.conf.js --browser edge",
+    "otherTests": "npx wdio run ./config/wdio.conf.js --suite otherTests"
   },
   "author": "",
   "license": "ISC",
