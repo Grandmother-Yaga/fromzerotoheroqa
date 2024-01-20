@@ -24,7 +24,8 @@ switch (argv.browser) {
     };
     break;
 
-  case 'chrome':
+  default:
+    // case 'chrome':
     browser = {
       browserName: 'chrome',
       // browserVersion: '120.0.6099.109',

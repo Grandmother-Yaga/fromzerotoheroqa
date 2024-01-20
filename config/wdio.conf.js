@@ -1,4 +1,6 @@
 const { browser } = require('./yargs.conf.js');
+const fs = require('fs');
+const path = require('path');
 
 exports.config = {
   //
@@ -113,7 +115,7 @@ exports.config = {
   // Services take over a specific job you don't want to take care of. They enhance
   // your test setup with almost no effort. Unlike plugins, they don't add new
   // commands. Instead, they hook themselves up into the test process.
-  // services: ['chromdriver'],
+  // services: ['chromedriver'],
   //
   // Framework you want to run your specs with.
   // The following are supported: Mocha, Jasmine, and Cucumber
@@ -157,8 +159,28 @@ exports.config = {
    * @param {object} config wdio configuration object
    * @param {Array.<Object>} capabilities list of capabilities details
    */
-  // onPrepare: function (config, capabilities) {
-  // },
+  onPrepare: function (config, capabilities) {
+    function makeFolder(nameFolder) {
+      if (!fs.existsSync(`./${nameFolder}`)) {
+        fs.mkdirSync(`${nameFolder}`);
+      }
+    }
+
+    function cleanFolder(nameFolder) {
+      fs.readdir(`${nameFolder}`, (err, files) => {
+        if (err) throw err;
+
+        for (const file of files) {
+          fs.unlink(path.join(`${nameFolder}`, file), (err) => {
+            if (err) throw err;
+          });
+        }
+      });
+    }
+
+    makeFolder('screenshots');
+    cleanFolder('screenshots');
+  },
   /**
    * Gets executed before a worker process is spawned and can be used to initialise specific service
    * for that worker as well as modify runtime environments in an async fashion.
@@ -238,15 +260,32 @@ exports.config = {
    * @param {boolean} result.passed    true if test has passed, otherwise false
    * @param {object}  result.retries   information about spec related retries, e.g. `{ attempts: 0, limit: 0 }`
    */
-  // afterTest: async function (
-  //   test,
-  //   context,
-  //   { error, result, duration, passed, retries }
-  // ) {
-  //   if (!passed) {
-  //     await browser.takeScreenshot();
-  //   }
-  // },
+
+  /*
+//FIXME: Does not save a screenshot -> 
+Error in "AfterTest Hook" browser.saveScreenshot is not a function    
+ERROR @wdio/utils:shim: TypeError: browser.saveScreenshot is not a function   
+ERROR: Couldn't read tbsCertificate as SEQUENCE 
+ERROR: Failed parsing Certificate
+*/
+
+  afterTest: async function (
+    test,
+    context,
+    { error, result, duration, passed, retries }
+  ) {
+    // const date = new Date().toLocaleString().replace(/:/g, '-');
+    // const nameFile = path.basename(test.file).replace(/\W/g, '_');
+    // const nameTest = test.title.replace(/\W/g, '_');
+
+    if (!passed) {
+      await browser.saveScreenshot('./screenshots/afterTest.png');
+
+      // await browser.saveScreenshot(
+      //   `./screenshots/Date_${date}_FileName_${nameFile}_TestName_${nameTest}.png`
+      // );
+    }
+  },
 
   /**
    * Hook that gets executed after the suite has ended
